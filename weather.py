@@ -16,8 +16,8 @@ response = requests.get(request_url)
 if response.status_code == 200:
     data = response.json()  # Contains JSON data of a given city as Python dictionary.
     weather = data["weather"][0]["description"]
-    print(weather)
-    temperature = data["main"]["temp"]
-    print(f"{round(temperature - 273.15, 2)} Celsius")  # Celsius = Kelvin - 273.15
+    temperature = round(data["main"]["temp"] - 273.15, 2)  # Celsius = Kelvin - 273.15
+    print(f"Weather: {weather}")
+    print(f"Temperature: {temperature} Celsius")
 else:
     print("An error occurred")
